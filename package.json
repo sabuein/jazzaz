@@ -1,0 +1,29 @@
+{
+  "name": "web-scraping",
+  "version": "1.0.0",
+  "description": "\"A tool to scrap data with puppeteer\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sabuein/web-scraping.git"
+  },
+  "keywords": [
+    "web",
+    "scraping",
+    "data",
+    "content"
+  ],
+  "author": "Salaheddin AbuEin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sabuein/web-scraping/issues"
+  },
+  "homepage": "https://github.com/sabuein/web-scraping#readme",
+  "dependencies": {
+    "npm": "^9.1.2",
+    "puppeteer": "^19.3.0"
+  }
+}
