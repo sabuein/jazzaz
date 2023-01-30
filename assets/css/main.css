@@ -1,0 +1,41 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 100%;
+}
+
+header, main, footer {
+    margin: 0 auto;
+    text-align: center;
+    max-width: 85%;
+}
+
+input[type="text"], 
+input[type="password"] {
+    width: 100px;
+}
+
+select {
+    width: 120px;
+}
+
+table {
+    margin: 1.5rem 0;
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td,
+th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="./assets/css/main.css" />
+    <script type="importmap">
+      {
+        "imports": {
+          "corps": "./assets/js/modules/corps.mjs"
+          "io": "./assets/js/modules/io.mjs",
+          "private": "./assets/js/modules/private.mjs",
+          "scraping": "./assets/js/modules/scraping.mjs"
+        }
+      }
+    </script>
+</head>
+
+<body>
+  <header>
+    <h1 id="pageHeader">Reading files</h1>
+    <!-- form action="./index.html" method="post" -->
+      <input type="text" name="user" id="userName" placeholder="Username" disabled />
+      <input type="password" name="pwd" id="userPassword" placeholder="Password" autocomplete="current-password" minlength="4" maxlength="8" size="8" disabled />
+      <input type="file" name="file" id="docSource" />
+      <select name="doctype" id="docType" disabled>
+        <optgroup label="Image files">
+          <option value="jpeg">Joint photographic experts group (JPEG or JPG)</option>
+          <option value="gif">Graphics interchange format (GIF)</option>
+          <option value="svg">Scalable vector graphics (SVG)</option>
+          <option value="png">Portable networks graphic (PNG)</option>
+          <option value="tiff">Tagged image file format (TIFF or TIF)</option>
+        </optgroup>
+        <optgroup label="Document files">
+          <option value="pdf">Portable document format (PDF)</option>
+          <option value="doc">Word document (DOC and DOCX)</option>
+          <option value="html">Hypertext markup language (HTML and HTM)</option>
+          <option value="xls">Microsoft excel spreadsheet file (XLS and XLSX)</option>
+          <option value="csv">Comma-separated values (CSV)</option>
+          <option value="txt" selected>Text file (TXT)</option>
+        </optgroup>
+        <optgroup label="Video files">
+          <option value="mp4">Moving picture experts group layer four (MP4)</option>
+          <option value="avi">Audio video interleave (AVI)</option>
+          <option value="mov">QuickTime Movie file (MOV)</option>
+          <option value="flv">Flash video format (FLV)</option>
+          <option value="avchd">Advanced video coding, high definition (AVCHD)</option>
+        </optgroup>
+        <optgroup label="Presentation files">
+          <option value="ppt">PowerPoint presentation (PPT or PPTX)</option>
+          <option value="odp">Open document presentation (ODP)</option>
+          <option value="key">Apple Keynote file (KEY)</option>
+        </optgroup>
+        <optgroup label="Audio files">
+          <option value="m4a">MPEG 4 audio (M4A)</option>
+          <option value="mp3">MPEG layer audio 3 (MP3)</option>
+          <option value="wav">Waveform audio file (WAV)</option>
+        </optgroup>
+      </select>
+      <input type="submit" id="docSubmit" value="Display content" />
+    <!--/form-->
+  </header>
+  <main>
+    <div id="docPreview"></div>
+  </main>
+  <footer>
+    <p><a href="#pageHeader">Back-to-Top</a></p>
+    <script type="module" src="./assets/js/render.js"></script>
+  </footer>
+</body>
+
+</html>
