@@ -1,64 +1,18 @@
 // io.mjs
 
-import { getLinkTitle } from "scraping";
+import { processImage } from "processors";
 
 const readAndDisplay = (input, output, type = "text") => {
     input.addEventListener("change", function () {
-        let child = output.lastElementChild,
-            reader = new FileReader();
-        while (child) {
-            output.removeChild(child);
-            child = output.lastElementChild;
+        
+        // Clearing the preview
+        while (output.firstChild) {
+            output.removeChild(output.firstChild);
         }
 
         if (type === "image") {
-            reader.readAsDataURL(this.files[0]);
-            reader.onload = function () {
-                const img = new Image();
-                img.src = this.result;
-                img.onload = () => {
-                    const canvas = document.createElement("canvas");
-                    const context = canvas.getContext("2d");
-                    canvas.width = img.width;
-                    canvas.height = img.height;
-                    // Applying some filters before drawing the image
-                    context.filter = "grayscale(.85)";
-                    context.filter = "saturate(1.5)";
-                    context.filter = "blur(1px)";
-                    context.drawImage(img, 0, 0);
-                    // Setting font and adding text to the image
-                    context.font = "36px serif";
-                    context.fillText("Yallah!", 25, 50);
-                    output.appendChild(canvas);
-                    // Saving the image
-                    canvas.toBlob((file) => {
-                        let targets = [
-                            "https://httpbin.org/post",
-                            "https://reqres.in/api/users",
-                            "http://httpstat.us/200"
-                        ];
-                        const daForm = new FormData();
-                        daForm.append("img", file, "image.jpg");
-
-                        const myInit = {
-                            method: "post",
-                            body: daForm
-                        };
-
-                        fetch(targets[0], myInit)
-                            .then(response => {
-                                if (!response.ok) {
-                                    throw new Error("Network response was not OK");
-                                } else {
-                                    console.log(response);
-                                    return response.json();
-                                }
-                            })
-                            .then(payload => console.log(payload))
-                            .catch(error => console.error(error));
-                    });
-                }
-            }
+            processImage(this.files[0], output);
+            
         } else if (type === "text") {
             reader.readAsText(this.files[0]);
             reader.onload = function (progressEvent) {
@@ -77,10 +31,9 @@ const readAndDisplay = (input, output, type = "text") => {
                 csv.forEach(element => {
                     let tr = document.createElement("tr"),
                         tdElement = document.createElement("td"),
-                        tdIndex = document.createElement("td"),
-                        aTitle = getLinkTitle(element);
+                        tdIndex = document.createElement("td");
                     tdIndex.innerText = ++index;
-                    tdElement.innerHTML = `<a href="${element}" title="${aTitle}" target="_blank">${aTitle}</a>`;
+                    tdElement.innerHTML = `<a href="${element}" title="${element}" target="_blank">${element}</a>`;
                     tr.appendChild(tdIndex);
                     tr.appendChild(tdElement);
                     table.appendChild(tr);

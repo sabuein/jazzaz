@@ -21,7 +21,7 @@ if (HTMLScriptElement.supports?.("importmap")) {
   let source = document.getElementById("docSource"),
     preview = document.getElementById("docPreview"),
     submit = document.getElementById("docSubmit");
-  file(source, preview, "text");
+  file(source, preview, "image");
 
   const xX = curl("./assets/data/colors.json");
   console.log("xX:", xX);
